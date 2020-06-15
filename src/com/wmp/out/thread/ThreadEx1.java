@@ -26,6 +26,14 @@ class ThreadEx1_2 implements Runnable
 
     @Override
     public void run() {
-        System.out.println(Thread.currentThread().getName());
+       throwException();
+    }
+    public void throwException(){
+        try{
+            throw new Exception();
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }
