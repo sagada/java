@@ -40,6 +40,7 @@ class SCV extends GroundUnit implements Repairable
         }
     }
 }
+
 class Unit {
     int hitPoint;
     final int MAX_HP;
@@ -47,6 +48,7 @@ class Unit {
         this.MAX_HP = hp;
     }
 }
+
 class GroundUnit extends Unit
 {
     GroundUnit(int hp) {
@@ -82,6 +84,7 @@ class Marine extends GroundUnit
         hitPoint = MAX_HP;
     }
 }
+
 class DropShip extends AirUnit implements Repairable
 {
 
