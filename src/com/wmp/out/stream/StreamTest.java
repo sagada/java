@@ -13,30 +13,33 @@ public class StreamTest {
         List<String> names = s.stream()
                 .sorted(Comparator.comparing((Student::getName)).reversed())
                 .map(Student::getName)
+                .map(String::toUpperCase)
+                .distinct()
                 .collect(Collectors.toList());
 
         names.forEach(System.out::println);
 
+        
     }
 
     static List<Student> givenStudent()
     {
         List<Student> s = new ArrayList<>();
-        s.add(new Student("키워드1", 3, 300));
-        s.add(new Student("키워드2", 3, 400));
-        s.add(new Student("키워드3", 3, 300));
-        s.add(new Student("키워드1", 3, 300));
-        s.add(new Student("키워드2", 3, 300));
-        s.add(new Student("키워드1", 3, 300));
-        s.add(new Student("키워드5", 3, 300));
-        s.add(new Student("키워드4", 3, 300));
-        s.add(new Student("키워드4", 3, 300));
+        s.add(new Student("abcd1", 3, 300));
+        s.add(new Student("abcd1", 3, 400));
+        s.add(new Student("abce2", 3, 300));
+        s.add(new Student("abce2", 3, 300));
+        s.add(new Student("aAEQe", 3, 300));
+        s.add(new Student("A", 3, 300));
+        s.add(new Student("a", 3, 300));
+        s.add(new Student("E", 3, 300));
+        s.add(new Student("e", 3, 300));
 
         return s;
     }
 }
 
-class Student  {
+class Student implements Comparable<Student> {
     String name;
     int ban;
     int totalScore;
@@ -80,4 +83,8 @@ class Student  {
         this.totalScore = totalScore;
     }
 
+    public int compareTo(Student s)
+    {
+        return s.totalScore - this.totalScore;
+    }
 }
