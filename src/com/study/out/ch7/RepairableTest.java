@@ -1,4 +1,4 @@
-package com.wmp.out.ch7;
+package com.study.out.ch7;
 
 class RepairableTest {
     public static void main(String[] args) {

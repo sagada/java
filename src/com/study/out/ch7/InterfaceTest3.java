@@ -1,4 +1,4 @@
-package com.wmp.out.ch7;
+package com.study.out.ch7;
 
 public class InterfaceTest3 {
     public static void main(String[] args) {

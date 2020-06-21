@@ -1,7 +1,6 @@
-package com.wmp.out.stream;
+package com.study.out.stream;
 
 
-import java.sql.Struct;
 import java.util.*;
 import java.util.stream.Collectors;
 

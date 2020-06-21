@@ -1,4 +1,4 @@
-package com.wmp.out.ch7;
+package com.study.out.ch7;
 
 @FunctionalInterface
 interface MyF {

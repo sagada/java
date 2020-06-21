@@ -1,4 +1,4 @@
-package com.wmp.out.stream;
+package com.study.out.stream;
 
 import java.util.Comparator;
 import java.util.stream.Stream;

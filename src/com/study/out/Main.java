@@ -1,4 +1,4 @@
-package com.wmp.out;
+package com.study.out;
 
 
 public class Main {
