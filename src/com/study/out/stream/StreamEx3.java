@@ -1,6 +1,8 @@
 package com.study.out.stream;
 
 import java.util.Comparator;
+import java.util.IntSummaryStatistics;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StreamEx3 {
@@ -20,6 +22,18 @@ public class StreamEx3 {
         studentStream.sorted(Comparator.comparing(Student::getBan)
                 .thenComparing(Comparator.reverseOrder()))
                 .forEach(System.out::println);
+
+
+        studentStream = Stream.of(stuArr);
+
+        IntStream stuScoreStream = studentStream.mapToInt(Student::getTotalScore);
+        IntSummaryStatistics stat = stuScoreStream.summaryStatistics();
+        System.out.println("count : " + stat.getCount());
+        System.out.println("sum : " + stat.getSum());
+        System.out.println("average : " + stat.getAverage());
+        System.out.println("min = " + stat.getMin());
+        System.out.println("max = " + stat.getMax());
+
     }
 }
 
