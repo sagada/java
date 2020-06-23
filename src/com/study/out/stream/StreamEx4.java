@@ -1,51 +1,53 @@
 package com.study.out.stream;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 public class StreamEx4 {
 
     public static void main(String[] args) {
+        Optional<String> optStr = Optional.of("abcde");
+        Optional<Integer> optInt = optStr.map(String::length);
+        System.out.println("optStr : " + optStr.get());
+        System.out.println("optInt : " + optInt.get());
 
-        String[] arr ={
-                "I Belibe 그댄 곁에 없지만안",
-                "그댄만을 안아줄수 없겠죠",
-                "아이 빌립 그댄 행복한기리를"
-        };
+        int result1 = Optional.of("123")
+                        .filter(x->x.length() > 0)
+                        .map(Integer::parseInt).get();
 
-        Stream<String> lineStream = Arrays.stream(arr);
-        Stream<String> str = lineStream.flatMap(line->Stream.of(line.split(" +")));
+        int result2 = Optional.of("")
+                        .filter(x->x.length() > 0)
+                        .map(Integer::parseInt).orElse(-1);
 
-        str.map(String::toUpperCase)
-                .distinct()
-                .sorted()
-                .forEach(System.out::println);
-        System.out.println("########################################################################################");
+        System.out.println("result1 = " + result1);
+        System.out.println("result2 = " + result2);
 
-        Stream<String[]> strArrStrm = Stream.of(
-                new String[]{"abc", "def", "jkl"},
-                new String[]{"ABC", "DEF", "JKL"}
-        );
+        Optional.of("456").map(Integer::parseInt)
+                    .ifPresent(x-> System.out.printf("result3 = %d%n",x));
 
-        Stream<String> strStream = strArrStrm.flatMap(Arrays::stream);
+        Optional<String> opt = Optional.ofNullable(null);
+        Optional<String> opt2 = Optional.empty();
 
-        strStream.map(String::toLowerCase)
-                .distinct()
-                .sorted()
-                .forEach(System.out::println);
-        System.out.println();
+        System.out.println("opt = " + opt);
+        System.out.println("opt2 = "+ opt2);
 
-        String [] lineArr = {
-                "Belive or not It is true",
-                "Do or do not There is no try",
-        };
+        System.out.println("opt.equals(opt2)?" + opt.equals(opt2));
+        int result3 = optStrToInt(Optional.of("123"), 0);
+        int result4 = optStrToInt(Optional.of(""), 1);
 
-        Stream<String> lineStream2 = Arrays.stream(lineArr);
-//        lineStream2.forEach(System.out::println);
-//
-        Stream<String> f = lineStream2.flatMap(l -> Stream.of(l.split(" +")));
-        f.forEach(System.out::println);
+        System.out.println("result3 = " + result3);
+        System.out.println("result4 = " + result4);
+    }
 
-
+    static int optStrToInt(Optional<String> optStr, int defaultValue)
+    {
+        try
+        {
+            return optStr.map(Integer::parseInt).get();
+        }
+        catch(Exception e)
+        {
+            return defaultValue;
+        }
     }
 }
