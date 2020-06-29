@@ -30,6 +30,25 @@ public class FlatMapEx1 {
 
         System.out.println("---------------------------------------------------------------------");
 
+        String[] lineArr2 = {
+                "Believe or not It is true",
+                "Do or do not There is no try"
+        };
 
+        Stream<String> lineStream2 = Arrays.stream(lineArr2);
+        lineStream2.flatMap(line-> Stream.of(line.split(" +")))
+                .map(String::toLowerCase)
+                .distinct()
+                .sorted()
+                .forEach(System.out::println);
+        System.out.println("---------------------------------------------------------------------");
+
+        Stream<String> strStrm1 = Stream.of("AAA","ABC","bBb","Dd");
+        Stream<String> strStrm2 = Stream.of("bbb","aaa","ccc","dd");
+        Stream<Stream<String>> streamStream = Stream.of(strStrm1,strStrm2);
+        Stream<String> stringStream1 = streamStream
+                                        .map(s->s.toArray(String[] ::new))
+                                        .flatMap(Arrays::stream);
+        stringStream1.forEach(System.out::println);
     }
 }
