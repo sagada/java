@@ -39,12 +39,20 @@ public class CollectEx5 {
                         }, Collectors.counting())
                 );
 
-        for(Map.Entry<Student5.Level, Long> entry : stuByLevel.entrySet())
+        for (Map.Entry<Student5.Level, Long> entry : stuByLevel.entrySet())
         {
             System.out.println(entry.getKey());
             System.out.println(entry.getValue());
         }
 
+        Map<Integer, List<Student5>> stuByBan = stuStream.stream().collect(Collectors.groupingBy(
+                Student5::getBan));
+
+        for (Map.Entry<Integer, List<Student5>> entry : stuByBan.entrySet())
+        {
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+        }
     }
 }
 
