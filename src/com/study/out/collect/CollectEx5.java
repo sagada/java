@@ -53,11 +53,21 @@ public class CollectEx5 {
             System.out.println(entry.getKey());
             System.out.println(entry.getValue());
         }
+
         Map<Boolean, Optional<Student5>> topScoreBySex = stuStream.stream().collect(
                 Collectors.partitioningBy(Student5::isMale, Collectors.maxBy(Comparator.comparingInt(Student5::getScore)))
         );
 
+        System.out.println("남학생 1등 : " + topScoreBySex.get(true));
+        System.out.println("여학생 1등 : " + topScoreBySex.get(false));
 
+        Map<Integer, List<Student5>> stuByBan1 = stuStream.stream().collect(
+                Collectors.groupingBy(Student5::getBan));
+
+        for (Map.Entry<Integer, List<Student5>> entry : stuByBan1.entrySet())
+        {
+            System.out.println(entry.getKey() + " / " + entry.getValue());
+        }
     }
 }
 
