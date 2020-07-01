@@ -1,8 +1,8 @@
 package com.study.out.collect;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CollectEx5 {
@@ -53,6 +53,11 @@ public class CollectEx5 {
             System.out.println(entry.getKey());
             System.out.println(entry.getValue());
         }
+        Map<Boolean, Optional<Student5>> topScoreBySex = stuStream.stream().collect(
+                Collectors.partitioningBy(Student5::isMale, Collectors.maxBy(Comparator.comparingInt(Student5::getScore)))
+        );
+
+
     }
 }
 
