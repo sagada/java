@@ -70,26 +70,22 @@ public class CollectEx5 {
             System.out.println(entry.getKey() + " / " + entry.getValue());
         }
 
+        Map<Student5.Level, Long> stuByLevel2 = stuStream
+                    .stream()
+                    .collect(
+                            Collectors.groupingBy(
+                                    s->{
+                                        if(s.getScore()  >= 200)
+                                            return Student5.Level.HIGH;
+                                        else if(s.getScore() >= 100)
+                                            return Student5.Level.MID;
+                                        else
+                                            return Student5.Level.LOW;
+                                    }, Collectors.counting())
+                    );
 
+        stuByLevel2.forEach((key, value) -> System.out.println(key + " / " + value));
 
-    }
-    private static List<Long> listgets(int i)
-    {
-        List<Long> t1 = Arrays.asList(1111L,2222L,3333L);
-        List<Long> t2 = Arrays.asList(4444L,5555L,6666L);
-        List<Long> t3 = Arrays.asList(7777L,8888L,9999L);
-        if(i == 1)
-        {
-            return t1;
-        }
-        else if(i == 2)
-        {
-            return t2;
-        }
-        else
-        {
-            return t3;
-        }
     }
 }
 
