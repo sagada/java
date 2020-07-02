@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CollectEx5 {
     public static void main(String[] args) {
@@ -67,17 +68,26 @@ public class CollectEx5 {
             System.out.println(entry.getKey() + " / " + entry.getValue());
         }
 
-        List<List<Long>> gets = new ArrayList<>();
+
+
+    }
+    private static List<Long> listgets(int i)
+    {
         List<Long> t1 = Arrays.asList(1111L,2222L,3333L);
         List<Long> t2 = Arrays.asList(4444L,5555L,6666L);
         List<Long> t3 = Arrays.asList(7777L,8888L,9999L);
-        gets.add(t1);
-        gets.add(t2);
-        gets.add(t3);
-
-        List<Long> getis = gets.stream().flatMap(List::stream).collect(Collectors.toList());
-        getis.forEach(System.out::println);
-
+        if(i == 1)
+        {
+            return t1;
+        }
+        else if(i == 2)
+        {
+            return t2;
+        }
+        else
+        {
+            return t3;
+        }
     }
 }
 
