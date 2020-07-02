@@ -58,8 +58,6 @@ public class CollectEx5 {
                 Collectors.partitioningBy(Student5::isMale, Collectors.maxBy(Comparator.comparingInt(Student5::getScore)))
         );
 
-        System.out.println("남학생 1등 : " + topScoreBySex.get(true));
-        System.out.println("여학생 1등 : " + topScoreBySex.get(false));
 
         Map<Integer, List<Student5>> stuByBan1 = stuStream.stream().collect(
                 Collectors.groupingBy(Student5::getBan));
@@ -68,6 +66,18 @@ public class CollectEx5 {
         {
             System.out.println(entry.getKey() + " / " + entry.getValue());
         }
+
+        List<List<Long>> gets = new ArrayList<>();
+        List<Long> t1 = Arrays.asList(1111L,2222L,3333L);
+        List<Long> t2 = Arrays.asList(4444L,5555L,6666L);
+        List<Long> t3 = Arrays.asList(7777L,8888L,9999L);
+        gets.add(t1);
+        gets.add(t2);
+        gets.add(t3);
+
+        List<Long> getis = gets.stream().flatMap(List::stream).collect(Collectors.toList());
+        getis.forEach(System.out::println);
+
     }
 }
 
