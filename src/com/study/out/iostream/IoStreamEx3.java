@@ -1,26 +1,26 @@
 package com.study.out.iostream;
 
-import java.io.FileInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class IoStreamEx3 {
     public static void main(String[] args) {
         try
         {
-            FileInputStream fis = new FileInputStream("/Users/sanghyunyun/Desktop/study/java_init/src/com/study/out/iostream/file-test.txt");
-            InputStreamReader reader = new InputStreamReader(fis, "UTF-8");
+            FileOutputStream fos = new FileOutputStream("file-output-stream.txt");
+            BufferedOutputStream bos = new BufferedOutputStream(fos, 5);
 
-            int data = 0;
-            while( (data = reader.read()) != -1)
+            for(int i = '1' ; i <= '9' ; i++)
             {
-                char c = (char)data;
-                System.out.println(c);
+                bos.write(i);
             }
+
+            bos.close();
         }
         catch(IOException e)
         {
-
+            e.printStackTrace();
         }
 
     }
