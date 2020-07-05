@@ -1,25 +1,31 @@
 package com.study.out.iostream;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
+
 public class IoStreamEx1 {
     public static void main(String[] args) {
-        CU godCUPANG = new CU();
-        godCUPANG.re();
-    }
-}
+        byte [] inSrc = {0,1,2,3,4,5,6,7,8,9};
+        byte [] outSrc = null;
 
-class CU extends Q
-{
-    @Override
-    int re() {
-        System.out.println("갓 쿠");
-        return 1;
-    }
-}
-abstract class Q{
-    abstract int re();
+        ByteArrayInputStream input = null;
+        ByteArrayOutputStream output = null;
 
-    int re(int a, int b, int c){
-        System.out.println("갓팡");
-        return 1;
+        input = new ByteArrayInputStream(inSrc);
+        output = new ByteArrayOutputStream();
+
+        int data = 0;
+
+        while ((data = input.read()) != -1)
+        {
+            output.write(data);
+        }
+
+        outSrc = output.toByteArray();
+
+        System.out.println("Input Source  : " + Arrays.toString(inSrc));
+        System.out.println("Output Source : " + Arrays.toString(outSrc));
+
     }
 }
