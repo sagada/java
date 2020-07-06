@@ -1,25 +1,31 @@
 package com.study.out.iostream;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class IoStreamEx3 {
     public static void main(String[] args) {
-        try
-        {
-            FileOutputStream fos = new FileOutputStream("file-output-stream.txt");
-            BufferedOutputStream bos = new BufferedOutputStream(fos, 5);
+        try {
+            String fileName = "/Users/sanghyunyun/Desktop/study/java_init/src/com/study/out/iostream/file-test.txt";
+            FileInputStream fis = new FileInputStream(fileName);
+            FileReader fr = new FileReader(fileName);
 
-            for(int i = '1' ; i <= '9' ; i++)
+            int data = 0;
+            while ((data = fis.read()) != -1)
             {
-                bos.write(i);
+                System.out.println((char) data);
             }
 
-            bos.close();
-        }
-        catch(IOException e)
-        {
+            System.out.println();
+            fis.close();
+            while ((data = fr.read()) != -1)
+            {
+                System.out.println((char) data);
+
+            }
+
+            System.out.println();
+            fr.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
