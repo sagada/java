@@ -13,12 +13,12 @@ public class PredicateEx2 {
         for (int i = 0; i < 10; i++)
             list.add(i);
 
-        list.forEach(System.out::println);
+//        list.forEach(System.out::println);
 
         System.out.println();
 
         list.removeIf(x-> x % 2 == 0);
-        list.forEach(System.out::println);
+//        list.forEach(System.out::println);
 
 
         list.replaceAll(i->i*10);
@@ -39,23 +39,26 @@ public class PredicateEx2 {
         IntPredicate p = i -> i % 2 == 0;
 
         Function<Integer, Integer> f = i -> i / 10 * 10;
-
         List<Integer> list2 = new ArrayList<>();
+
+        Function<Integer, Integer> f4 = (a)->2*a ;
+
+
         list2.add(12);
         list2.add(59);
-
         list2.add(61);
-
         list2.add(90);
 
 
-//        System.out.println("makeRandomList 출력");
-//        makeRandomList(s, list2);
-
-//        doSomething(f, list2).forEach(System.out::println);
-
-        printEvenNum(p, c, new int[10]);
-
+        System.out.println("doSomething ~!");
+        doSomething(new Function<Integer, Integer>(){
+            @Override
+            public Integer apply(Integer integer) {
+                System.out.println(1);
+                System.out.println(2);
+                return 1;
+            }
+        }, list2);
     }
 
     static void printEvenNum(IntPredicate p, IntConsumer c, int []arr)
