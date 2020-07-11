@@ -43,10 +43,7 @@ public class Main {
 
                 if (diff < 0) {
                     cnt += zToO;
-                    diff = diff * -1;
                     OToZ -= zToO;
-                    zToO = 0;
-
                     cnt += 2 * OToZ;
                     cnt += mToO - OToZ;
                     cnt += mToZ;
