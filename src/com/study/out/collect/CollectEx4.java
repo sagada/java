@@ -30,26 +30,10 @@ public class CollectEx4 {
         stuStream.add(new Student2("강지미", false, 2, 3, 150));
         stuStream.add(new Student2("이자바", true, 2, 3, 200));
 
-        System.out.printf("%n4. 다중 분할 (성별 불합격자, 100점 이하) %n");
-        Map<Boolean, Map<Boolean, List<Student2>>> failedStuBySex =
-                stuStream
-                        .stream()
-                        .collect(Collectors.partitioningBy(Student2::isMale,
-                                Collectors.partitioningBy(s->s.getScore() <= 100)));
+        Map<Integer, List<Student2>> map = stuStream.stream()
+                .collect(Collectors.groupingBy(Student2::getBan));
 
-        List<Student2> failedMaleStu = failedStuBySex.get(true).get(true);
-        List<Student2> successMaleStu = failedStuBySex.get(true).get(false);
-        List<Student2> failedFemaleStu = failedStuBySex.get(false).get(true);
-
-        System.out.println("불합격 한 남자들");
-        for(Student2 s : failedMaleStu)
-            System.out.println(s);
-        System.out.println("불합격 한 여자들");
-        for(Student2 s :failedFemaleStu)
-            System.out.println(s);
-        System.out.println("합격한 남자들");
-        for(Student2 s : successMaleStu)
-            System.out.println(s);
+        map.entrySet().stream().map(Map.Entry::getKey).forEach(System.out::println);
 
 
     }
