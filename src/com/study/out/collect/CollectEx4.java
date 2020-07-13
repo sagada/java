@@ -3,6 +3,7 @@ package com.study.out.collect;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class CollectEx4 {
@@ -33,8 +34,52 @@ public class CollectEx4 {
         Map<Integer, List<Student2>> map = stuStream.stream()
                 .collect(Collectors.groupingBy(Student2::getBan));
 
-        map.entrySet().stream().map(Map.Entry::getKey).forEach(System.out::println);
+        map.keySet().forEach(System.out::println);
 
+        Map<Student2.Level, List<Student2>> map2ByLevel = stuStream.stream()
+                .collect(Collectors.groupingBy(s->{
+                    if(s.getScore() >= 200)
+                    {
+                        return Student2.Level.HIGH;
+                    }
+                    else if(s.getScore() >= 100)
+                    {
+                        return Student2.Level.MID;
+                    }
+                    else {
+                        return Student2.Level.LOW;
+                    }
+                }));
 
+        TreeSet<Student2.Level> keySet = new TreeSet<>(map2ByLevel.keySet());
+
+        for (Student2.Level level : keySet)
+        {
+            System.out.println("[" + level + "]");
+            for (Student2 student2 : map2ByLevel.get(level))
+            {
+                System.out.println(student2);
+            }
+            System.out.println();
+        }
+
+        Map<Student2.Level, Long> stuCntByLevel = stuStream.stream()
+                .collect(Collectors.groupingBy(
+                                s->{
+                                    if(s.getScore()>=200)
+                                        return Student2.Level.HIGH;
+                                    else if(s.getScore() >= 100)
+                                        return Student2.Level.MID;
+                                    else
+                                        return  Student2.Level.LOW;
+                                },Collectors.counting()
+                ));
+
+        System.out.printf("%n3. 단순 그룹화 + 통계(성적별 학생수)%n");
+        for(Student2.Level key : stuCntByLevel.keySet())
+        {
+            System.out.printf("[%s] - %d 명, ", key, stuCntByLevel.get(key));
+        }
+        System.out.println();
     }
 }

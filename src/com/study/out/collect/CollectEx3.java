@@ -90,6 +90,10 @@ class Student2 {
                 ']';
     }
 
+    enum Level{
+        HIGH, MID, LOW
+    }
+
     public String getName() {
         return name;
     }
