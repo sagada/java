@@ -8,17 +8,20 @@ public class ShapeLine extends Shape{
     }
 
     @Override
-    public int getTypeCode() {
+    public int getTypeCode()
+    {
         return Shape.TYPECODE_LINE;
     }
 
     @Override
-    public String getName() {
+    public String getName()
+    {
         return "Line";
     }
 
     @Override
-    public void draw() {
+    public void draw()
+    {
         System.out.println("drawLine : " + this.toString());
     }
 

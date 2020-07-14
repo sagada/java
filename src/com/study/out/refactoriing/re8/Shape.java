@@ -19,19 +19,9 @@ public abstract class Shape {
         this._endy = _endy;
     }
 
-    public static Shape createShape(int typeCode, int _startx, int _starty, int _endx, int _endy)
+    public static Shape createShape(ShapeFactory factory, int _startx, int _starty, int _endx, int _endy)
     {
-        switch (typeCode)
-        {
-            case TYPECODE_LINE:
-                return new ShapeLine(_startx, _starty, _endx, _endy);
-            case TYPECODE_RECTANGLE:
-                return new ShapeRectangle(_startx, _starty, _endx, _endy);
-            case TYPECODE_OVAL:
-                return new ShapeOval(_startx, _starty, _endx, _endy);
-            default:
-                return null;
-        }
+        return factory.create(_starty, _startx, _endx,_endy);
     }
 
     public abstract int getTypeCode();

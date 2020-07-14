@@ -25,7 +25,7 @@ public class Main {
 
             for (int i = 0; i < s.length(); i++) {
                 if (s.charAt(i) == '?' && t.charAt(i) == '1') {
-                    mToO++:
+                    mToO++;
                 } else if (s.charAt(i) == '?' && t.charAt(i) == '0') {
                     mToZ++;
                 } else if (s.charAt(i) == '1' && t.charAt(i) == '0') {
