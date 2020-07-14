@@ -1,9 +1,6 @@
 package com.study.out.collect;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CollectEx4 {
@@ -81,5 +78,34 @@ public class CollectEx4 {
             System.out.printf("[%s] - %d 명, ", key, stuCntByLevel.get(key));
         }
         System.out.println();
+
+
+    }
+}
+
+class Merger implements Comparator {
+
+    private Integer c;
+
+    public Integer getC() {
+        return c;
+    }
+
+    public void setC(Integer c) {
+        this.c = c;
+    }
+
+    @Override
+    public int compare(Object o1, Object o2) {
+
+        if (o1 instanceof Comparable && o2 instanceof Comparable)
+        {
+            Comparable c1 = (Comparable)o1;
+            Comparable c2 = (Comparable)o2;
+
+            return c1.compareTo(c2) * -1;
+        }
+
+        return -1;
     }
 }
