@@ -7,6 +7,11 @@ public class ShapeLine extends Shape{
         super(startx, starty, endx, endy);
     }
 
+    public static ShapeLine createShapeLine(int sx, int sy, int ex, int ey)
+    {
+        return new ShapeLine(sx,sy,ex,ey);
+    }
+
     @Override
     public int getTypeCode()
     {
@@ -24,6 +29,5 @@ public class ShapeLine extends Shape{
     {
         System.out.println("drawLine : " + this.toString());
     }
-
 
 }
