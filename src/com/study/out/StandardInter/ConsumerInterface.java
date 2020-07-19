@@ -1,6 +1,5 @@
 package com.study.out.StandardInter;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 
 import java.util.Arrays;
 import java.util.List;
@@ -60,11 +59,13 @@ public class ConsumerInterface {
         doubleConsumer.accept(10L);
         System.out.println();
 
-
-
-
-
-
+        System.out.println("ObjIntConsumer Test");
+        ObjIntConsumer<String> objIntConsumer = (q, v)->{
+            System.out.println(q.charAt(0));
+            System.out.println(v);
+        };
+        objIntConsumer.accept("사랑해", 1);
+        System.out.println();
     }
 }
 class ConsumerTest{
