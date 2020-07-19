@@ -61,7 +61,6 @@ public class StreamEx7 {
                 .collect(Collectors.groupingBy(StreamG::getGrade,Collectors.groupingBy(StreamG::getBan)));
 
         integerListMap.entrySet()
-                .stream()
                 .forEach(
                         s->{
                             System.out.println(s.getValue().toString());
