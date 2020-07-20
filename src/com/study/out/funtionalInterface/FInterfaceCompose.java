@@ -1,7 +1,7 @@
 package com.study.out.funtionalInterface;
 
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Objects;
+import java.util.function.*;
 
 public class FInterfaceCompose {
     public static void main(String[] args) {
@@ -38,6 +38,42 @@ public class FInterfaceCompose {
         System.out.println(it.test(24));
         System.out.println(it.test(123));
 
+        Function<String,Integer> stringIntegerFunction = Integer::parseInt;
+        int intValue = stringIntegerFunction.apply("1234");
+        System.out.println(intValue);
 
+        BiFunction<String, String, Boolean> fbi = String::equals;
+
+        ObjecTest test1  = new ObjecTest();
+        Function<String, Integer> st = test1::testObj;
+        System.out.println(st.apply("1234"));
+
+        System.out.println("static method reference");
+        Function<String, String> stringStringFunction = ObjecTest::test;
+        String yun = stringStringFunction.apply("윤종신");
+        System.out.println(yun);
+
+        Function<String,String> xxxx = ObjecTest::test;
+        System.out.println(xxxx.apply("DDDD"));
+    }
+}
+class ObjecTest
+{
+    private String name;
+
+    public static String test(String name){
+        return name + "..... 너에게 간다.....";
+    }
+
+    public int testObj(String name)
+    {
+        return Integer.parseInt(name);
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
