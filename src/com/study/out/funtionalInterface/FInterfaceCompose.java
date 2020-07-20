@@ -1,6 +1,5 @@
 package com.study.out.funtionalInterface;
 
-import java.util.Objects;
 import java.util.function.*;
 
 public class FInterfaceCompose {
@@ -55,6 +54,15 @@ public class FInterfaceCompose {
 
         Function<String,String> xxxx = ObjecTest::test;
         System.out.println(xxxx.apply("DDDD"));
+
+        BiFunction<String,Integer, St> factory = St::new;
+        St st1 = factory.apply("안녕하세요", 12);
+        System.out.println("이름 : " + st1.getName());
+        System.out.println("반 : " + st1.getBan());
+
+        Function<Integer, int[]> f22 = int[]::new;
+        int [] arr = f22.apply(3);
+        System.out.println("사이즈 : " + arr.length) ;
     }
 }
 class ObjecTest
@@ -75,5 +83,31 @@ class ObjecTest
 
     public void setName(String name) {
         this.name = name;
+    }
+}
+
+class St{
+    private String name;
+    private int ban;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getBan() {
+        return ban;
+    }
+
+    public void setBan(int ban) {
+        this.ban = ban;
+    }
+
+    public St(String name, int ban) {
+        this.name = name;
+        this.ban = ban;
     }
 }
