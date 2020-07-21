@@ -1,6 +1,5 @@
 package com.study.out.StandardInter;
 
-import java.sql.SQLOutput;
 import java.util.function.IntPredicate;
 
 public class PredicateAndOrNegateExample {
@@ -8,8 +7,8 @@ public class PredicateAndOrNegateExample {
 
         IntPredicate predicateA = a -> a % 2 == 0;
         IntPredicate predicateB = b -> b % 3 == 0;
-
         IntPredicate predicateAB;
+
         boolean result;
 
         // and ()
@@ -19,7 +18,6 @@ public class PredicateAndOrNegateExample {
 
         System.out.println("9는 2와 3의 배수 입니꽈?");
         System.out.println(result);
-
 
         //or
         predicateAB = predicateA.or(predicateB);
