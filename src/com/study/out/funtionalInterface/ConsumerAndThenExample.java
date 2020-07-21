@@ -35,6 +35,7 @@ public class ConsumerAndThenExample {
 
         System.out.println("거주 도시 : " + city);
 
+
     }
 }
 
