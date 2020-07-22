@@ -1,6 +1,7 @@
 package com.study.out.StandardInter;
 
 import java.util.function.IntPredicate;
+import java.util.function.Predicate;
 
 public class PredicateAndOrNegateExample {
     public static void main(String[] args) {
@@ -27,5 +28,24 @@ public class PredicateAndOrNegateExample {
         predicateAB = predicateA.negate();
         System.out.println("9는 홀수 입니까?" + predicateAB.test(9));
 
+
+        Predicate<String> predicate;
+
+        predicate = Predicate.isEqual(null);
+        System.out.println("null, null : " + predicate.test(null));
+
+        predicate = Predicate.isEqual("Java8");
+        System.out.println("null, Java8 : " + predicate.test(null));
+
+        predicate = Predicate.isEqual(null);
+        System.out.println("Java8, null : " + predicate.test("Java8"));
+
+        predicate = Predicate.isEqual("Java8");
+        System.out.println("Java8, Java8 : " + predicate.test("Java8"));
+
+        predicate = Predicate.isEqual("야생마");
+        System.out.println("야생마, 야생마 : " + predicate.test("야생마"));
+
+        
     }
 }
