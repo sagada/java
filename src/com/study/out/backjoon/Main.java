@@ -10,46 +10,46 @@ public class Main {
     private static void swap(char [][] map, int i, int j, int toI, int toJ)
     {
         char temp = map[i][j];
-
         map[i][j] = map[toI][toJ];
         map[toI][toJ] = temp;
     }
 
     private static int check(char [][] map, int size)
     {
+        int maxValue = 0;
 
-        int maxValue = 1;
         for (int i = 0; i < size; i++)
         {
             int cnt = 1;
-            for(int j = 1; j < size; j++)
+            for (int j = 1; j < size; j++)
             {
-                if(map[i][j-1] == map[i][j])
+                if (map[i][j-1] == map[i][j])
                 {
                     cnt++;
                 }
                 else
                 {
-                    cnt = 0;
+                    cnt = 1;
                 }
                 maxValue = Math.max(maxValue, cnt);
             }
 
             cnt = 1;
-            for(int j = 1; j < size; j++)
+            for (int j = 1; j < size; j++)
             {
-                if(map[j-1][i] == map[j][i])
+                if (map[j-1][i] == map[j][i])
                 {
                     cnt++;
                 }
                 else
                 {
-                    cnt = 0;
+                    cnt = 1;
                 }
                 maxValue = Math.max(maxValue, cnt);
             }
 
         }
+
         return maxValue;
 
     }
@@ -81,7 +81,7 @@ public class Main {
                 if (j + 1 < n)
                 {
                     swap(map, i, j, i, j+1);
-                    ret = Math.max(check(map, n),ret);
+                    ret = Math.max(check(map, n), ret);
                     swap(map, i, j, i, j+1);
                 }
 
