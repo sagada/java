@@ -29,6 +29,11 @@ public class Main {
             System.out.println("다름");
         }
 
+        int value1 = Util.compare2(10, 20);
+        System.out.println(value1);
+
+        int value2 = Util.compare2(4.5, 3);
+        System.out.println(value2);
 
     }
 }
