@@ -1,31 +1,52 @@
 package com.study.out;
 
 
-import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
-    static BigInteger[][] dp = new BigInteger[101][101];
-    
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        init();
-        int N = sc.nextInt();
-        int M = sc.nextInt();
-        System.out.println(dp[N][M]);
-    }
+        Friend kim = new Friend("Kim", 36);
+        Friend park = new Friend("Park", 20);
+        Friend lee = new Friend("Lee", 28);
+        Friend yong = new Friend("Yong", 18);
 
-    static void init()
-    {
-       dp[1][0] = dp[1][1] = BigInteger.ONE;
+        List<Friend> d = new ArrayList<>();
+        d.add(kim);
+        d.add(park);
+        d.add(lee);
+        d.add(yong);
 
-       for (int i = 2; i <= 100; i++)
-       {
-           for (int j = 0; j <= i; j++)
-           {
-               if (j == 0 || i == j) dp[i][j] = BigInteger.ONE;
-               else dp[i][j] = dp[i - 1][j].add(dp[i - 1][j - 1]);
-           }
-       }
+        Collections.sort(d);
+
+        System.out.println(d);
     }
 }
+
+class Friend implements Comparable<Friend>{
+    private String name;
+    private int age;
+
+    @Override
+    public String toString() {
+        return "Friend{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
+    public Friend(String name, int age) {
+        super();
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public int compareTo(Friend o) {
+
+        return o.age - this.age;
+    }
+}
+
+
